@@ -19,7 +19,7 @@ class UserController extends Controller {
 		$user[10] = array("user_name" => "zitoun555", "first_name" => "Raphael", "last_name" => "Zitoun");
 		foreach ($user AS $key => $value) Users::insertUser($table, array_merge(array("id" => $key), $value));
 		
-		// Change user_name from Raphael to Rafi
+		// Change first_name from Raphael to Rafi
 		Users::updateUser($table, array("id" => 10, "first_name" => "Rafi"));
 		
 		// Delete the last user
