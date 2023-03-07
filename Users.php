@@ -78,7 +78,7 @@ class Users extends Model {
 	*/
 	public static function updateUser($table = "", $data = array()) {	
 		// Get all the users of the table
-        $users = Users::getAllUsers($table);
+		$users = Users::getAllUsers($table);
 		
 		// Stop the operation if the user ID is not found
 		if (!is_array($users) || !isset($data["id"]) || !array_key_exists($data["id"], $users)) return false;
@@ -91,7 +91,7 @@ class Users extends Model {
 		
 		// Save the new JSON
 		return (file_put_contents(Users::getFullPath($table), json_encode(array($users)))) ? true: false;
-    }
+	}
 	
 	/**
 	* Remove a user from the table
@@ -101,7 +101,7 @@ class Users extends Model {
 	*/
 	public static function deleteUser($table = "", $data = array("id" => 0)) {
 		// Get all the users from the table
-        $users = Users::getAllUsers($table);
+		$users = Users::getAllUsers($table);
 		
 		// Stop the operation if the user ID is not found
 		if (!is_array($users) || !isset($data["id"]) || !array_key_exists($data["id"], $users)) return false;
@@ -111,7 +111,7 @@ class Users extends Model {
 		
 		// Save the final JSON
 		return (file_put_contents(Users::getFullPath($table), json_encode(array($users)))) ? true : false;
-    }
+	}
 		
 	/**
 	* Get data of a specific user
@@ -119,7 +119,7 @@ class Users extends Model {
 	* @param array $data - user ID
 	* @return array - data of the specific user (or false)
 	*/
-    public static function getUserById($table = "", $data = array("id" => 0)) {
+	public static function getUserById($table = "", $data = array("id" => 0)) {
 		// Get all the users of the table
 		$users = Users::getAllUsers($table);
 		
@@ -128,7 +128,7 @@ class Users extends Model {
 		
 		// Return data of the specific user
 		return $users[$data["id"]];
-    }
+	}
 
 	/**
 	* Return specific fields for all the users
@@ -136,7 +136,7 @@ class Users extends Model {
 	* @param array $fields - list of the required fields
 	* @return array $return - requested list of users (or false)
 	*/
-    public static function getUsersByFields($table = "", $fields = array()) {
+	public static function getUsersByFields($table = "", $fields = array()) {
 		// Check authorized fields
 		$authorized_fields = array("id", "user_name", "first_name", "last_name");
 		foreach ($fields AS $key => $value) {
@@ -160,5 +160,5 @@ class Users extends Model {
 			$i++;
 		}
         return $return;
-    }
+	}
 }
