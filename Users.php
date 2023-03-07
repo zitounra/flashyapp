@@ -38,14 +38,14 @@ class Users extends Model {
 	public function getAllUsers($table = "") {
 		// Full path of the JSON file
 		$path = Users::getFullPath($table);
-		
+
 		// Stop the operation if the table name is incorrect or if the file doesn't exist
 		if (!isset($table) || $table == "" || !file_exists($path)) return false;
-		
+
 		// Parse and return the JSON file into an array
 		$content = json_decode(file_get_contents($path), true);
 		return (count($content) > 0) ? $content[0] : array();
-    }
+	}
 	
 	/**
 	* Add a new user to the JSON file
